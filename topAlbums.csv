@@ -1,0 +1,66 @@
+positiononlist,releaseyear,albumname,artist,genre,producer,studio,albumduration,albumlabel,artistscronologyalbumorder,numberoftracks
+1,1967,Sgt. Pepper's Lonely Hearts Club Band,The Beatles,Rock,George Martin,EMI,2376,Parlophone,8,13
+1,1967,Sgt. Pepper's Lonely Hearts Club Band,The Beatles,Psychedelic Rock,George Martin,EMI,2376,Parlophone,8,13
+2,1966,Pet Sounds,The Beach Boys,Rock,Brian Wilson,United Western Recorders,2157,Capitol,11,13
+2,1966,Pet Sounds,The Beach Boys,Pop Rock,Brian Wilson,United Western Recorders,2157,Capitol,11,13
+2,1966,Pet Sounds,The Beach Boys,Psychedelic Rock,Brian Wilson,United Western Recorders,2157,Capitol,11,13
+3,1966,Revolver,The Beatles,Rock,George Martin,EMI,2101,Parlophone,7,14
+3,1966,Revolver,The Beatles,Psychedelic Rock,George Martin,EMI,2101,Parlophone,7,14
+3,1966,Revolver,The Beatles,Pop Rock,George Martin,EMI,2101,Parlophone,7,14
+4,1965,Highway 61 Revisited,Bob Dylan,Rock,Bob Johnston,Columbia Studio A,3086,Columbia,6,9
+4,1965,Highway 61 Revisited,Bob Dylan,Folk Rock,Bob Johnston,Columbia Studio A,3086,Columbia,6,9
+4,1965,Highway 61 Revisited,Bob Dylan,Blues Rock,Bob Johnston,Columbia Studio A,3086,Columbia,6,9
+5,1965,Rubber Soul,The Beatles,Rock,George Martin,EMI,2099,Parlophone,6,12
+5,1965,Rubber Soul,The Beatles,Pop Rock,George Martin,EMI,2099,Parlophone,6,12
+6,1971,What's Going On,Marvin Gaye,Funk,Marvin Gaye,Hitsville U.S.A.,2104,Tamla,11,9
+6,1971,What's Going On,Marvin Gaye,Soul,Marvin Gaye,Hitsville U.S.A.,2104,Tamla,11,9
+7,1972,Exile on Main St.,The Rolling Stones,Blues Rock,Jimmy Miller,Olympic,4027,Rolling Stones,10,18
+7,1972,Exile on Main St.,The Rolling Stones,Rock,Jimmy Miller,Olympic,4027,Rolling Stones,10,18
+7,1972,Exile on Main St.,The Rolling Stones,Classic Rock,Jimmy Miller,Olympic,4027,Rolling Stones,10,18
+8,1979,London Calling,The Clash,Rock,Guy Stevens,Wessex,3907,CBS,3,19
+8,1979,London Calling,The Clash,Punk,Guy Stevens,Wessex,3907,CBS,3,19
+8,1979,London Calling,The Clash,New Wave,Guy Stevens,Wessex,3907,CBS,3,19
+9,1966,Blonde on Blonde,Bob Dylan,Rock,Bob Johnston,Columbia 7th Ave,4377,Columbia,7,14
+9,1966,Blonde on Blonde,Bob Dylan,Blues,Bob Johnston,Columbia 7th Ave,4377,Columbia,7,14
+9,1966,Blonde on Blonde,Bob Dylan,Folk Rock,Bob Johnston,Columbia 7th Ave,4377,Columbia,7,14
+9,1966,Blonde on Blonde,Bob Dylan,Rhythm & Blues,Bob Johnston,Columbia 7th Ave,4377,Columbia,7,14
+10,1968,The Beatles (The White Album),The Beatles,Rock,George Martin,EMI,5613,Apple,9,30
+10,1968,The Beatles (The White Album),The Beatles,Pop Rock,George Martin,EMI,5613,Apple,9,30
+10,1968,The Beatles (The White Album),The Beatles,Psychedelic Rock,George Martin,EMI,5613,Apple,9,30
+10,1968,The Beatles (The White Album),The Beatles,Experimental,George Martin,EMI,5613,Apple,9,30
+11,1976,The Sun Sessions,Elvis Presley,Rock,Sam Phillips,Sun (Memphis),2387,RCA Records,12,16
+12,1959,Kind of Blue,Miles Davis,Jazz,Irving Townsend,Columbia 30th Street,2744,Columbia,28,5
+12,1959,Kind of Blue,Miles Davis,Modal,Irving Townsend,Columbia 30th Street,2744,Columbia,28,5
+13,1967,The Velvet Underground & Nico,The Velvet Underground,Rock,Andy Warhol,Scepter,2871,Verve,1,11
+13,1967,The Velvet Underground & Nico,The Velvet Underground,Garage Rock,Andy Warhol,Scepter,2871,Verve,1,11
+13,1967,The Velvet Underground & Nico,The Velvet Underground,Art Rock,Andy Warhol,Scepter,2871,Verve,1,11
+13,1967,The Velvet Underground & Nico,The Velvet Underground,Experimental,Andy Warhol,Scepter,2871,Verve,1,11
+14,1969,Abbey Road,The Beatles,Rock,George Martin,EMI,2823,Apple,11,17
+14,1969,Abbey Road,The Beatles,Psychedelic Rock,George Martin,EMI,2823,Apple,11,17
+14,1969,Abbey Road,The Beatles,Classic Rock,George Martin,EMI,2823,Apple,11,17
+14,1969,Abbey Road,The Beatles,Pop Rock,George Martin,EMI,2823,Apple,11,17
+15,1967,Are You Experienced,The Jimi Hendrix Experience,Rock,Chas Chandler,De Lane Lea,2314,Track,1,11
+15,1967,Are You Experienced,The Jimi Hendrix Experience,Blues,Chas Chandler,De Lane Lea,2314,Track,1,11
+15,1967,Are You Experienced,The Jimi Hendrix Experience,Psychedelic Rock,Chas Chandler,De Lane Lea,2314,Track,1,11
+16,1975,Blood on the Tracks,Bob Dylan,Rock,Bob Dylan,A & R Recording,3106,Columbia,15,10
+16,1975,Blood on the Tracks,Bob Dylan,Folk Rock,Bob Dylan,A & R Recording,3106,Columbia,15,10
+16,1975,Blood on the Tracks,Bob Dylan,Acoustic,Bob Dylan,A & R Recording,3106,Columbia,15,10
+16,1975,Blood on the Tracks,Bob Dylan,Ballad,Bob Dylan,A & R Recording,3106,Columbia,15,10
+17,1991,Nevermind,Nirvana,Rock,Butch Vig,"Sound City (Van Nuys, California)",2556,DGC,2,13
+17,1991,Nevermind,Nirvana,Alternative Rock,Butch Vig,"Sound City (Van Nuys, California)",2556,DGC,2,13
+17,1991,Nevermind,Nirvana,Grunge,Butch Vig,"Sound City (Van Nuys, California)",2556,DGC,2,13
+18,1975,Born to Run,Bruce Springsteen,Rock,John Landau,"914 (Blauvelt, New York)",2363,Columbia,3,9
+18,1975,Born to Run,Bruce Springsteen,Pop Rock,John Landau,"914 (Blauvelt, New York)",2363,Columbia,3,9
+19,1968,Astral Weeks,Van Morrison,Jazz,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Rock,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Blues,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Folk,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,World,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Country,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Acoustic,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Classic Rock,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+19,1968,Astral Weeks,Van Morrison,Free Improvisation,Lewis Merenstein,Century Sound,2830,Warner Bros.,2,8
+20,1982,Thriller,Michael Jackson,Pop,Quincy Jones,Westlake,2536,Epic,6,9
+20,1982,Thriller,Michael Jackson,Funk,Quincy Jones,Westlake,2536,Epic,6,9
+20,1982,Thriller,Michael Jackson,Soul,Quincy Jones,Westlake,2536,Epic,6,9
+20,1982,Thriller,Michael Jackson,Disco,Quincy Jones,Westlake,2536,Epic,6,9
