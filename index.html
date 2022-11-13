@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Lista top 20 albuma svih vremena prema časopisu Rolling Stone">
+    <meta name="title" content="Top 20 Albums">
+    <meta name="author" content="Karlo Emert">
+
+    <title>OR Labos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .row {
+            margin-top: 100px;
+        }
+
+        .card {
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+        .metapodaci{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Otvoreno računarstvo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/datatable">Tablični prikaz<span class="sr-only"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row col d-flex justify-content-center">
+<div class="card col-sm-6" style="width: 18rem;">
+    <img class="card-img-top" src="/images/json.png" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">JSON</h5>
+        <p class="card-text">Moguće je preuzeti otvorene podatke u JSON zapisu.</p>
+        <a href="/json" class="btn btn-secondary">Preuzmi</a>
+    </div>
+</div>
+<div class="card col-sm-6" style="width: 18rem;">
+    <img class="card-img-top" src="/images/csv.png" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">CSV</h5>
+        <p class="card-text">Moguće je preuzeti otvorene podatke u CSV zapisu.</p>
+        <a href="/csv" class="btn btn-secondary">Preuzmi</a>
+    </div>
+</div>
+</div>
+<div class="card metapodaci">
+    <div class="card-body">
+        <li>Podaci: Lista top 20 albuma svih vremena prema časopisu Rolling Stone</li>
+        <li>Licenca: Creative Commons Zero v1.0 Universal</li>
+        <li>Autor: Karlo Emert</li>
+        <li>Podaci su na engleskom jeziku</li>
+        <li>Atributi skupa podataka su:</li>
+        <ul>
+            <li>positionOnList (opisuje redni broj albuma na listi albuma)</li>
+            <li>releaseYear (godina izdavanja albuma)</li>
+            <li>albumName (naziv albuma)</li>
+            <li>artist (izvođač albuma)</li>
+            <li>genre (podžanrovi)</li>
+            <li>producer (producent albuma)</li>
+            <li>studio (glazbeni studio u kojem je album sniman)</li>
+            <li>albumDuration (trajanje albuma u sekundama)</li>
+            <li>albumLabel (izdavačka kuća u kojoj je izdan album)</li>
+            <li>artistsCronologyAlbumOrder (redni broj albuma u diskografiji izvođača)</li>
+            <li>numberOfTracks (broj pjesama na albumu)</li>
+        </ul>
+        <li>Datum objavljivanja: 1.11.2022.</li>
+        <li>Tema: glazba</li>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>

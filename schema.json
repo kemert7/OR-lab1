@@ -1,0 +1,194 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"$id": "https://github.com/kemert7/OR-lab1/blob/main/topAlbums.json",
+	"type": "array",
+	"title": "Rolling Stone's Top 20 Albums Of All Time",
+	"items": {
+		"type": "object",
+		"title": "Album",
+		"description": "Objekt koji sadrži sve podatke o jednom albumu.",
+		"required": [
+			"positiononlist",
+			"releaseyear",
+			"albumname",
+			"artist",
+			"genre",
+			"producer",
+			"studio",
+			"albumduration",
+			"albumlabel",
+			"artistscronologyalbumorder",
+			"numberoftracks"
+		],
+		"properties": {
+			"positiononlist": {
+				"type": "integer",
+				"title": "positiononlist",
+				"description": "pozicija na listi",
+				"examples": [
+					1,
+					2
+				]
+			},
+			"releaseyear": {
+				"type": "integer",
+				"title": "releaseyear",
+				"description": "godina izdanja",
+				"examples": [
+					1967,
+					1966
+				]
+			},
+			"albumname": {
+				"type": "string",
+				"title": "albumname",
+				"description": "ime albuma",
+				"examples": [
+					"Sgt. Pepper's Lonely Hearts Club Band",
+					"Pet Sounds"
+				]
+			},
+			"artist": {
+				"type": "string",
+				"title": "artist",
+				"description": "ime izvođača",
+				"examples": [
+					"The Beatles",
+					"The Beach Boys"
+				]
+			},
+			"genre": {
+				"type": "array",
+				"title": "genre",
+				"description": "žanr albuma",
+				"items": {
+					"type": "object",
+					"title": "subgenre",
+					"required": [
+						"subgenre"
+					],
+					"properties": {
+						"subgenre": {
+							"type": "string",
+							"title": "subgenre",
+							"description": "podžanr albuma",
+							"examples": [
+								"Rock",
+								"Psychedelic Rock",
+								"Pop Rock",
+								"Folk Rock",
+								"Blues Rock",
+								"Funk",
+								"Soul",
+								"Classic Rock",
+								"Punk",
+								"New Wave",
+								"Blues",
+								"Rhythm & Blues",
+								"Experimental",
+								"Jazz",
+								"Modal",
+								"Garage Rock",
+								"Art Rock",
+								"Acoustic",
+								"Ballad",
+								"Alternative Rock",
+								"Grunge",
+								"Folk",
+								"World",
+								"Country",
+								"Free Improvisation",
+								"Pop",
+								"Disco"
+							]
+						}
+					},
+					"examples": [
+						{
+							"subgenre": "Rock"
+						},
+						{
+							"subgenre": "Psychedelic Rock"
+						}
+					]
+				},
+				"producer": {
+					"type": "string",
+					"title": "producer",
+					"description": "ime producenta albuma",
+					"examples": [
+						"George Martin",
+						"Brian Wilson"
+					]
+				},
+				"studio": {
+					"type": "string",
+					"title": "studio",
+					"description": "ime studija u kojem je sniman album",
+					"examples": [
+						"EMI",
+						"United Western Recorders"
+					]
+				},
+				"albumduration": {
+					"type": "integer",
+					"title": "albumduration",
+					"description": "trajanje albuma u sekundama",
+					"examples": [
+						2376,
+						2157
+					]
+				},
+				"albumlabel": {
+					"type": "string",
+					"title": "albumlabel",
+					"description": "diskografska kuća koja je izdala album",
+					"examples": [
+						"Parlophone",
+						"Capitol"
+					]
+				},
+				"artistscronologyalbumorder": {
+					"type": "integer",
+					"title": "artistscronologyalbumorder",
+					"description": "redni broj albuma u diskografiji izvođača",
+					"examples": [
+						8,
+						11
+					]
+				},
+				"numberoftracks": {
+					"type": "integer",
+					"title": "numberoftracks",
+					"description": "broj pjesama na albumu",
+					"examples": [
+						13,
+						14
+					]
+				}
+			},
+			"examples": [
+				{
+					"positiononlist": 1,
+					"releaseyear": 1967,
+					"albumname": "Sgt. Pepper's Lonely Hearts Club Band",
+					"artist": "The Beatles",
+					"genre": [
+						{
+							"subgenre": "Rock"
+						},
+						{
+							"subgenre": "Psychedelic Rock"
+						}
+					],
+					"producer": "George Martin",
+					"studio": "EMI",
+					"albumduration": 2376,
+					"albumlabel": "Parlophone",
+					"artistscronologyalbumorder": 8,
+					"numberoftracks": 13
+				}
+			]
+		}
+	}
+}
