@@ -1,0 +1,582 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "My REST API",
+    "description": "3. Labos iz otvorenog računarstva",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "karlo.emert@fer.hr"
+    },
+    "license": {
+      "name": "Creative Commons Zero v1.0 Universal",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/apiAlbums": {
+      "get": {
+        "tags": [
+          "albums"
+        ],
+        "summary": "Returns all albums on list",
+        "description": "Returns all albums on list of top albums of all time",
+        "responses": {
+          "200": {
+            "description": "Fetch successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Albums"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Add a new album to the list",
+        "description": "Add a new album to the list",
+        "requestBody": {
+          "description": "Create a new album on list",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Album"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Insert succesful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Albums"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/apiAlbums/{id}": {
+      "put": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Update an existing album",
+        "description": "Update an existing album by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Positiononlist",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update an existing album on list",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Albums"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Albums"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invalid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Finds album by position on list",
+        "description": "Finds album by position on list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Positiononlist",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Albums"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invalid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Delete album by position on list",
+        "description": "Delete album by position on list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Position on list",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Delete"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invalid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/apiAlbums/artist/{artist}": {
+      "get": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Finds albums by artist name",
+        "description": "Finds albums by artist name",
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "path",
+            "description": "artistname",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Albums"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invalid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/apiAlbums/album/{albumname}": {
+      "get": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Finds albums by album name",
+        "description": "Finds albums by album name",
+        "parameters": [
+          {
+            "name": "albumname",
+            "in": "path",
+            "description": "albumname",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Albums"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invalid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/apiAlbums/studio/{studio}": {
+      "get": {
+        "tags": [
+          "album"
+        ],
+        "summary": "Finds albums by studio name",
+        "description": "Finds albums by studio name",
+        "parameters": [
+          {
+            "name": "studio",
+            "in": "path",
+            "description": "studio",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Albums"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invalid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OpenApi": {
+      "get": {
+        "tags": [
+          "OpenApi"
+        ],
+        "summary": "Returns OpenApi Specs",
+        "description": "Returns Open Api Specification in JSON format",
+        "responses": {
+          "200": {
+            "description": "Fetch successful"
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Albums": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "OK"
+          },
+          "message": {
+            "type": "string",
+            "example": "Operation succesful"
+          },
+          "response": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Album"
+            }
+          }
+        }
+      },
+      "Album": {
+        "type": "object",
+        "properties": {
+          "positiononlist": {
+            "type": "integer",
+            "format": "int64",
+            "example": 11
+          },
+          "releaseyear": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1976
+          },
+          "albumname": {
+            "type": "string",
+            "example": "The Sun Sessions"
+          },
+          "artist": {
+            "type": "string",
+            "example": "Elvis Presley"
+          },
+          "genre": {
+            "type": "string",
+            "example": "Rock"
+          },
+          "producer": {
+            "type": "string",
+            "example": "Sam Phillips"
+          },
+          "studio": {
+            "type": "string",
+            "example": "Sun"
+          },
+          "albumduration": {
+            "type": "integer",
+            "format": "int64",
+            "description": "album duration in seconds",
+            "example": 2387
+          },
+          "albumlabel": {
+            "type": "string",
+            "example": "RCA Records"
+          },
+          "artistscronologyalbumorder": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12
+          },
+          "numberoftracks": {
+            "type": "integer",
+            "format": "int64",
+            "example": 16
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "Error"
+          },
+          "message": {
+            "type": "string",
+            "example": "Error message"
+          },
+          "response": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Delete": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "OK"
+          },
+          "message": {
+            "type": "string",
+            "example": "Album on position 21 deleted"
+          },
+          "response": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Invalid": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "OK"
+          },
+          "message": {
+            "type": "string",
+            "example": "Id does not exist"
+          },
+          "response": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}
