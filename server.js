@@ -5,10 +5,16 @@ const { Client } = require("pg")
 const dotenv = require("dotenv")
 dotenv.config()
 
+app.set('view engine', 'ejs');
+/*app.set('views',__dirname+'/views');*/
+app.engine('html',require('ejs').renderFile);
 app.use(express.static(__dirname + '/public'));
+
+/*app.use(express.static(__dirname + '/public'));
 app.set('views',__dirname+'/public');
 app.engine('html',require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'html');*/
+
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
@@ -24,20 +30,70 @@ const client = new Client({
 })
 client.connect();
 
-app.get('/', (req, res) => {
-    return res.render('index');
+const { auth,requiresAuth } = require('express-openid-connect');
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.SECRET,
+    baseURL: 'http://localhost:3000',
+    clientID: process.env.CLIENT_ID,
+    issuerBaseURL: 'https://dev-zq43djrc.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+/*app.get('/', (req, res) => {
+    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});*/
+
+var user={};
+
+app.get('/',(req, res) => {
+    user={
+        isAuthenticated: req.oidc.isAuthenticated()
+    };
+    if(user.isAuthenticated){
+        user.name=req.oidc.user.name;
+        user.nickname=req.oidc.user.nickname;
+        user.picture=req.oidc.user.picture
+        user.loggedIn = new Date (req.oidc.user.updated_at).toLocaleString();
+        user.email=req.oidc.user.email;
+    }
+    if(user.isAuthenticated){
+        return res.redirect('/frontpage')
+    }
+    return res.render('index.html');
 })
-app.get('/datatable', (req, res) => {
-    return res.render('datatable');
+app.get('/frontpage',requiresAuth(),(req, res) => {
+    return res.render('frontpage.html');
+})
+app.get('/profile',requiresAuth(),(req, res) => {
+    user={
+        isAuthenticated: req.oidc.isAuthenticated()
+    };
+    if(user.isAuthenticated){
+        user.name=req.oidc.user.name;
+        user.nickname=req.oidc.user.nickname;
+        user.picture=req.oidc.user.picture
+        user.loggedIn = new Date (req.oidc.user.updated_at).toLocaleString();
+        user.email=req.oidc.user.email;
+    }
+    return res.render('profile',{user:user});
+})
+app.get('/datatable', requiresAuth(),(req, res) => {
+    return res.render('datatable.html');
 })
 
-app.get('/json', (req, res) => {
+app.get('/json',requiresAuth(), (req, res) => {
     return res.download('topAlbums.json');
 })
-app.get('/csv', (req, res) => {
+app.get('/csv',requiresAuth(), (req, res) => {
     return res.download('topAlbums.csv');
 })
-app.get('/topAlbums', (req, res) => {
+app.get('/topAlbums',requiresAuth(), (req, res) => {
     client.query('SELECT * FROM albums', function(err, result){
         if(err){
             console.log(err);
@@ -49,12 +105,47 @@ app.get('/topAlbums', (req, res) => {
 })
 /// REST API dohvat svih albuma
 app.get('/apiAlbums', (req, res)=>{
+    let response=[];
     client.query(`Select * from albums order by positiononlist`, (err, result)=>{
         if(!err){
+            for (let key in result.rows) {
+                albumObj = {}
+                albumObj['@context'] = {
+                    "@vocab": "http://schema.org/",
+                    "albumname": "https://schema.org/MusicAlbum",
+                    "numberoftracks": "https://schema.org/MusicAlbum",
+                    "producer": "https://schema.org/Person"
+
+                }
+
+                albumObj['positiononlist'] = result.rows[key].positiononlist
+                albumObj['releaseyear'] = result.rows[key].releaseyear
+                albumObj['albumname'] =
+                    {
+                        "@type" :  'MusicAlbum',
+                        "name" :result.rows[key].albumname
+                    }
+                albumObj['artist'] = result.rows[key].artist
+                albumObj['genre'] = result.rows[key].genre
+                albumObj['producer'] =
+                    {
+                        "@type" :  'Person',
+                        "name": result.rows[key].producer
+                    }
+                albumObj['studio'] = result.rows[key].studio
+                albumObj['albumduration'] = result.rows[key].albumduration
+                albumObj['albumlabel'] = result.rows[key].albumlabel
+                albumObj['artistscronologyalbumorder'] = result.rows[key].artistscronologyalbumorder
+                albumObj['numberoftracks'] = {
+                    "@type" :  'MusicAlbum',
+                    "numTracks": result.rows[key].numberoftracks
+                }
+                response.push(albumObj)
+            }
             let wrapResponse={
                 "status":"OK",
                 "message":"Fetched list of all albums",
-                "response":result.rows
+                "response":response
             }
             res.send(wrapResponse);
         }
@@ -72,13 +163,46 @@ app.get('/apiAlbums', (req, res)=>{
 
 ///REST API dohvat pojedinog albuma po poretku na listi
 app.get('/apiAlbums/:id', (req, res)=>{
+    let response=[];
     client.query(`Select * from albums where positiononlist=${req.params.id}`, (err, result)=>{
         if(!err){
             if (result.rows.length>0){
+                albumObj = {}
+                albumObj['@context'] = {
+                    "@vocab": "http://schema.org/",
+                    "albumname": "https://schema.org/MusicAlbum",
+                    "numberoftracks": "https://schema.org/MusicAlbum",
+                    "producer": "https://schema.org/Person"
+
+                }
+
+                albumObj['positiononlist'] = result.rows[0].positiononlist
+                albumObj['releaseyear'] = result.rows[0].releaseyear
+                albumObj['albumname'] =
+                    {
+                        "@type" :  'MusicAlbum',
+                        "name" :result.rows[0].albumname
+                    }
+                albumObj['artist'] = result.rows[0].artist
+                albumObj['genre'] = result.rows[0].genre
+                albumObj['producer'] =
+                    {
+                        "@type" :  'Person',
+                        "name": result.rows[0].producer
+                    }
+                albumObj['studio'] = result.rows[0].studio
+                albumObj['albumduration'] = result.rows[0].albumduration
+                albumObj['albumlabel'] = result.rows[0].albumlabel
+                albumObj['artistscronologyalbumorder'] = result.rows[0].artistscronologyalbumorder
+                albumObj['numberoftracks'] = {
+                    "@type" :  'MusicAlbum',
+                    "numTracks": result.rows[0].numberoftracks
+                }
+                response.push(albumObj)
                 let wrapResponse = {
                     "status": "OK",
                     "message": "Fetched requested album by id " + req.params.id,
-                    "response": result.rows
+                    "response": response
                 }
                 res.send(wrapResponse);
             }
